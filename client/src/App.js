@@ -1,42 +1,74 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+
+
 import './App.css';
 
+import { Navbar } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
+import { NavItem } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
+import { MenuItem } from 'react-bootstrap';
+
+
+
 class App extends Component {
-state = {
+  state = {
     response: ''
   };
 
-  componentDidMount() {
-    this.callApi()
-      .then(res => this.setState({ response: res.express }))
-      .catch(err => console.log(err));
-  }
+ //  componentDidMount() {
+ //   this.callApi()
+  //    .then(res => this.setState({ response: res.express }))
+  //    .catch(err => console.log(err));
+ // }
+  // callApi = async () => {
+  //   const response = await fetch('/api/hello');
+  //   const body = await response.json();
 
-  callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
+  //   if (response.status !== 200) throw Error(body.message);
 
-    if (response.status !== 200) throw Error(body.message);
+  //   return body;
+  // }; 
 
-    return body;
-  }; 
-
-
-
-
-
-
-
- render() {
+  render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-       <p className="App-intro">{this.state.response}</p>
-      </div>
+      <div>
+
+      <Navbar bsStyle='default' inverse collapseOnSelect>
+  <Navbar.Header>
+    <Navbar.Brand>
+      <a href="#brand">React-Bootstrap</a>
+    </Navbar.Brand>
+    <Navbar.Toggle />
+  </Navbar.Header>
+  <Navbar.Collapse>
+    <Nav>
+      <NavItem eventKey={1} href="#">
+        Link
+      </NavItem>
+      <NavItem eventKey={2} href="#">
+        Link
+      </NavItem>
+      <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+        <MenuItem eventKey={3.1}>Action</MenuItem>
+        <MenuItem eventKey={3.2}>Another action</MenuItem>
+        <MenuItem eventKey={3.3}>Something else here</MenuItem>
+        <MenuItem divider />
+        <MenuItem eventKey={3.3}>Separated link</MenuItem>
+      </NavDropdown>
+    </Nav>
+    <Nav pullRight>
+      <NavItem eventKey={1} href="#">
+        Link Right
+      </NavItem>
+      <NavItem eventKey={2} href="#">
+        Link Right
+      </NavItem>
+    </Nav>
+  </Navbar.Collapse>
+</Navbar>
+</div>
     );
   }
 }
